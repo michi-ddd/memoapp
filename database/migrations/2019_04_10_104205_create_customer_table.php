@@ -17,8 +17,7 @@ class CreateCustomerTable extends Migration
             $table->bigIncrements('id');
             $table->string('nickname');
             $table->string('gender');
-            $table->timestamps('created_at');
-            $table->timestamps('update_at');
+            $table->timestamps();
         });
     }
 

@@ -17,8 +17,7 @@ class CreateMemosTable extends Migration
             $table->bigIncrements('id');
             $table->string('customer_id');
             $table->string('user_id');
-            $table->timestamps('created_at');
-            $table->timestamps('update_at');
+            $table->timestamps();
         });
     }
 
