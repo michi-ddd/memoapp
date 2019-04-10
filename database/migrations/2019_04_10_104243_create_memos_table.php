@@ -19,6 +19,10 @@ class CreateMemosTable extends Migration
             $table->string('customer_id');
             $table->string('user_id');
             $table->timestamps();
+            $table->foreign('user_id')
+            ->references('id')->on('users');
+            $table->foreign('customer_id')
+            ->references('id')->on('customer_id');
         });
     }
 
