@@ -15,14 +15,16 @@ class CreateMemosTable extends Migration
     {
         Schema::create('memos', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('memo1');
-            $table->string('customer_id');
-            $table->string('user_id');
+            $table->string('text');
+            $table->integer('customer_id');
+            $table->integer('user_id');
             $table->timestamps();
+
             $table->foreign('user_id')
-            ->references('id')->on('users');
+            ->references('id')->on('users')->onDelete('cascade');
+
             $table->foreign('customer_id')
-            ->references('id')->on('customer_id');
+            ->references('id')->on('customer_id')->onDelete('cascade');
         });
     }
 
