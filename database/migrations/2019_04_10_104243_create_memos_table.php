@@ -24,7 +24,7 @@ class CreateMemosTable extends Migration
             ->references('id')->on('users')->onDelete('cascade');
 
             $table->foreign('customer_id')
-            ->references('id')->on('customer_id')->onDelete('cascade');
+            ->references('id')->on('customers')->onDelete('cascade');
         });
     }
 
