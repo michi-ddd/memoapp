@@ -10,12 +10,6 @@
                 @else
                 <td>女性</td>
                 @endif
-                <td>
-                    <form action="/customer/detail" method="POST">
-                        {{ csrf_field() }}
-                        <input type="hidden" name="id" value="{{$customer->id}}">
-                    </form>
-                </td>
             </tr>
         @endforeach
         </table>
