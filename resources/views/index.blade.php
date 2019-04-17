@@ -13,8 +13,6 @@
   <body>
   
     <div class="list-group m-5">
-        <a href="/memo/index" class="list-group-item">メモリスト</a>
-        <a href="/memo/add" class="list-group-item">メモ投稿</a>
         <a href="/customer/index" class="list-group-item">顧客リスト</a>
         <a href="/customer/add" class="list-group-item">顧客登録</a>
     </div>
