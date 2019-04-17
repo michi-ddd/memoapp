@@ -10,5 +10,13 @@ class CustomerController extends Controller
         $customers = Customer::all();
         return view("customer.index",["customers"=>$customers]);
     }
-
+    public function add(){
+        return view("customer.add");
+    }
+    public function create(Request $request){
+        Customer::create([
+            'nickname' => $request->nickname,
+            'gender' => $request->gender]);
+        return redirect("/customer/index");
+    }
 }
