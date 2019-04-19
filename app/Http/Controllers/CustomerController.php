@@ -6,8 +6,24 @@ use Illuminate\Http\Request;
 
 class CustomerController extends Controller
 {
+    /**
+     * The user repository instance.
+     */
+    protected $customers;
+    /**
+     * Create a new controller instance.
+     *
+     * @param  Customer  $customers
+     * @return void
+     */
+
+    public function __construct(Customer $customers)
+    {
+        $this->customers = $customers;
+    }
+
     public function index(){
-        $customers = Customer::all();
+        $customers = $this->customers->all();
         return view("customer.index",["customers"=>$customers]);
     }
     public function add(){
