@@ -30,7 +30,7 @@ class CustomerController extends Controller
         return view("customer.add");
     }
     public function create(Request $request){
-        Customer::create([
+        $this->customers->create([
             'nickname' => $request->nickname,
             'gender' => $request->gender]);
         return redirect("/customer/index");
