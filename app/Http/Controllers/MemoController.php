@@ -9,9 +9,8 @@ use App\Customer;
 
 class MemoController extends Controller
 {
-
-/**
-     * The user repository instance.
+    /*
+     * The Memo repository instance.
      */
     protected $memos;
     /**
@@ -20,9 +19,7 @@ class MemoController extends Controller
      * @param  Memo  $memos
      * @return void
      */
-
-    public function __construct(Memo $memos)
-    {
+    public function __construct(Memo $memos){
         $this->memos = $memos;
     }
 
@@ -30,6 +27,7 @@ class MemoController extends Controller
         $memos = $this->memos->all();
         return view("/memo/index",["memos"=>$memos]);
     }
+
     public function add(){
         return view("/memo/add");
     }
