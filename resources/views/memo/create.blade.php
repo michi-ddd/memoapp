@@ -1,6 +1,6 @@
 
 <h1>メモ登録画面</h1>
-<form action="/memo/add" method="POST">
+<form action="/memo/create" method="POST">
 {{ csrf_field() }}
   <div>
   <table style="width:100%;" border="1">

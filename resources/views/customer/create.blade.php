@@ -1,6 +1,6 @@
 
 <h1>顧客登録画面</h1>
-<form action="/customer/add" method="POST">
+<form action="/customer/create" method="POST">
 {{ csrf_field() }}
   <div>
   <table style="width:100%;" border="1">

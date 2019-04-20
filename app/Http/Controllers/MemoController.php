@@ -28,11 +28,11 @@ class MemoController extends Controller
         return view("/memo/index",["memos"=>$memos]);
     }
 
-    public function add(){
-        return view("/memo/add");
+    public function create(){
+        return view("/memo/create");
     }
 
-    public function create(Request $request){
+    public function store(Request $request){
         $this->memos->create(['text' => $request->text, 
             'customer_id' => $request->customer_id, 
             'user_id' => $request->user_id,]);

@@ -26,10 +26,10 @@ class CustomerController extends Controller
         $customers = $this->customers->all();
         return view("customer.index",["customers"=>$customers]);
     }
-    public function add(){
-        return view("customer.add");
+    public function create(){
+        return view("customer.create");
     }
-    public function create(Request $request){
+    public function store(Request $request){
         $this->customers->create([
             'nickname' => $request->nickname,
             'gender' => $request->gender]);
