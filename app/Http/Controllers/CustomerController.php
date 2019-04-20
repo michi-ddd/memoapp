@@ -30,6 +30,11 @@ class CustomerController extends Controller
         return view("customer.create");
     }
     public function store(Request $request){
+        $validatedData = $request->validate([
+            'nickname' => 'required',
+            'gender' => 'required|integer',
+            ]);
+
         $this->customers->create([
             'nickname' => $request->nickname,
             'gender' => $request->gender]);

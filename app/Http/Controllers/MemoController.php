@@ -33,9 +33,16 @@ class MemoController extends Controller
     }
 
     public function store(Request $request){
+
+        $validatedData = $request->validate([
+            'customer_id' => 'required|integer',
+            'user_id' => 'required|integer',
+            ]);
+
         $this->memos->create(['text' => $request->text, 
             'customer_id' => $request->customer_id, 
             'user_id' => $request->user_id,]);
+
         return redirect("/memo/index");
     }
 }

@@ -1,5 +1,14 @@
 
 <h1>顧客登録画面</h1>
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 <form action="/customer/create" method="POST">
 {{ csrf_field() }}
   <div>
