@@ -13,6 +13,9 @@
 
 Route::get('/index', function () {return view('index');});
 Route::get('customer/index','CustomerController@index');
-Route::get('customer/add','CustomerController@add');
-Route::post('customer/add','CustomerController@create');
+Route::get('customer/create','CustomerController@create');
+Route::post('customer/create','CustomerController@store');
+Route::get('memo/index','MemoController@index');
+Route::post('memo/create','MemoController@store');
+Route::get('memo/create','MemoController@create');
 
