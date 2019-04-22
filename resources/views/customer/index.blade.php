@@ -4,12 +4,16 @@
             <tr><th>ニックネーム</th><th>性別</th></tr>
         @foreach($customers as $customer)
             <tr>
-                <td>{{$customer->nickname}}</td>
+                <td>
+                    <a href="/customer/show/{{$customer->id}}">{{$customer->nickname}}</a>
+                </td>
+
                 @if( $customer->gender == "1")
                 <td>男性</td>
                 @else
                 <td>女性</td>
                 @endif
+                
             </tr>
         @endforeach
         </table>
