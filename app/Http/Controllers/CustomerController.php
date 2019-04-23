@@ -43,7 +43,7 @@ class CustomerController extends Controller
     }
 
     public function show($id){
-        $customer = Customer::find($id);
+        $customer = $this->customers->find($id);
         if($customer == null) {
             return redirect('/customer/index');
         }
