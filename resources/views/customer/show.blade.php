@@ -17,15 +17,13 @@
                 <th>投稿者</th>
                 <th>投稿日</th>
             </tr>
-            @if($customer->memos != null)
-                    @foreach ($customer->memos as $memo)
-                        <tr>
-                            <td>{{$memo->text}}</td>
-                            <td>{{$memo->user->name}}</td>
-                            <td>{{$memo->created_at}}</td>
-                        <tr>
-                    @endforeach
-                @endif
+            @foreach ($customer->memos as $memo)
+            <tr>
+                <td>{{$memo->text}}</td>
+                <td>{{$memo->user->name}}</td>
+                <td>{{$memo->created_at}}</td>
+            <tr>
+            @endforeach
      </table>
     </div>
     <br>
