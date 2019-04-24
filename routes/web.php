@@ -25,4 +25,6 @@ Route::post('customer/del/','CustomerController@remove');
 Route::get('memo/index','MemoController@index');
 Route::post('memo/create','MemoController@store');
 Route::get('memo/create','MemoController@create');
+Route::get('memo/edit/{id}','MemoController@edit');
+Route::post('memo/edit/','MemoController@update');
 

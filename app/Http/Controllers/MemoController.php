@@ -45,4 +45,22 @@ class MemoController extends Controller
 
         return redirect("/memo/index");
     }
+
+    public function edit($id){
+        $memo = $this->memos->find($id);
+        if($memo == null) {
+            return redirect('/memo/index');
+        }
+        return view("/memo/edit",["memo"=>$memo]);
+    }
+
+    public function update(Request $request){
+        $validatedData = $request->validate([
+            'text' => 'required',
+            ]);       
+        $memo = $this->memos->find($request->id);
+        $memo->text = $request->text;
+        $memo->save();
+        return redirect('/customer/index');
+    }
 }
