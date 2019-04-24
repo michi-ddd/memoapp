@@ -17,8 +17,7 @@ class CustomerController extends Controller
      * @return void
      */
 
-    public function __construct(Customer $customers)
-    {
+    public function __construct(Customer $customers){
         $this->customers = $customers;
     }
 
@@ -26,9 +25,11 @@ class CustomerController extends Controller
         $customers = $this->customers->all();
         return view("customer.index",["customers"=>$customers]);
     }
+
     public function create(){
         return view("customer.create");
     }
+    
     public function store(Request $request){
         $validatedData = $request->validate([
             'nickname' => 'required',
@@ -39,5 +40,13 @@ class CustomerController extends Controller
             'nickname' => $request->nickname,
             'gender' => $request->gender]);
         return redirect("/customer/index");
+    }
+
+    public function show($id){
+        $customer = $this->customers->find($id);
+        if($customer == null) {
+            return redirect('/customer/index');
+        }
+        return view("customer.show",["customer"=>$customer]);
     }
 }
