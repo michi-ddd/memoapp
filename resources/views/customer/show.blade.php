@@ -4,10 +4,14 @@
     <table style="width:100%;"cellpadding="3" border="1">
             <tr>
                 <th>ニックネーム</th>
+                <th>編集</th>
+                <th>削除</th>
                 <th>性別</th>
             </tr>
             <tr>
-                <td>{{$customer->nickname}}</td>
+                <td>{{$customer->nickname}}
+                <td><a href="/customer/edit/{{$customer->id}}">編集</a></td>
+                <td><a href="/customer/del/{{$customer->id}}">削除</a></td>
                 @if($customer->gender == "1")
                 <td>男性</td>
                 @else
@@ -34,6 +38,4 @@
             @endforeach
      </table>
     </div>
-    <a href="/customer/edit/{{$customer->id}}">編集</a>
-    <a href="/customer/del/{{$customer->id}}">削除</a>
     <a href="/index" >HOME</a>
