@@ -17,6 +17,10 @@ Route::get('customer/index','CustomerController@index');
 Route::get('customer/create','CustomerController@create');
 Route::post('customer/create','CustomerController@store');
 Route::get('customer/show/{id}','CustomerController@show');
+Route::get('customer/edit/{id}','CustomerController@edit');
+Route::post('customer/edit/','CustomerController@update');
+Route::get('customer/del/{id}','CustomerController@delete');
+Route::post('customer/del/','CustomerController@remove');
 
 Route::get('memo/index','MemoController@index');
 Route::post('memo/create','MemoController@store');
