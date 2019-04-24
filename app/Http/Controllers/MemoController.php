@@ -63,4 +63,19 @@ class MemoController extends Controller
         $memo->save();
         return redirect('/customer/index');
     }
+
+    public function delete($id){
+        $memo = $this->memos->find($id);
+        if($memo == null) {
+            return redirect('/customer/index');
+        }
+        return view("memo.del",["memo"=>$memo]);
+    }
+
+    public function remove(Request $request){
+        $memo = $this->memos->find($request->id);
+        $memo->delete();
+        return redirect('customer/index');
+    }
+
 }

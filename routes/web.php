@@ -27,4 +27,7 @@ Route::post('memo/create','MemoController@store');
 Route::get('memo/create','MemoController@create');
 Route::get('memo/edit/{id}','MemoController@edit');
 Route::post('memo/edit/','MemoController@update');
+Route::get('memo/del/{id}','MemoController@delete');
+Route::post('memo/del/','MemoController@remove');
+
 

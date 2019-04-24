@@ -19,6 +19,7 @@
             <tr>
                 <th>Memo</th>
                 <th>編集</th>
+                <th>削除</th>
                 <th>投稿者</th>
                 <th>投稿日</th>
             </tr>
@@ -26,6 +27,7 @@
             <tr>
                 <td>{{$memo->text}}</td>
                 <td><a href="/memo/edit/{{$memo->id}}">編集</a>
+                <td><a href="/memo/del/{{$memo->id}}">削除</a>
                 <td>{{$memo->user->name}}</td>
                 <td>{{$memo->created_at}}</td>
             <tr>
