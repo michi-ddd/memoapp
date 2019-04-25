@@ -59,8 +59,9 @@ class MemoController extends Controller
             'text' => 'required',
             ]);       
         $memo = $this->memos->find($request->id);
-        $memo->text = $request->text;
-        $memo->save();
+        $memo->update([
+            'text' => $request->text,
+            ]);
         return redirect('/customer/index');
     }
 

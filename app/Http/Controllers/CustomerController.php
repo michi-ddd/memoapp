@@ -65,9 +65,10 @@ class CustomerController extends Controller
             ]);
 
         $customer = $this->customers->find($request->id);
-        $customer->nickname = $request->nickname;
-        $customer->gender = $request->gender;
-        $customer->save();
+        $customer->update([
+            'nickname' => $request->nickname,
+            'gender' => $request->gender
+            ]);
         return redirect('/customer/index');
     }
 
