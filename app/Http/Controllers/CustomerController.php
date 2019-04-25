@@ -61,6 +61,7 @@ class CustomerController extends Controller
     public function update(Request $request){
         $validatedData = $request->validate([
             'nickname' => 'required',
+            'gender' => 'required|integer',
             ]);
 
         $customer = $this->customers->find($request->id);
