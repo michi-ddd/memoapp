@@ -49,4 +49,42 @@ class CustomerController extends Controller
         }
         return view("customer.show",["customer"=>$customer]);
     }
+
+    public function edit($id){
+        $customer = $this->customers->find($id);
+        if($customer == null) {
+            return redirect('/customer/index');
+        }
+        return view("customer.edit",["customer"=>$customer]);
+    }
+
+    public function update(Request $request){
+        $validatedData = $request->validate([
+            'nickname' => 'required',
+            'gender' => 'required|integer',
+            ]);
+
+        $customer = $this->customers->find($request->id);
+        $customer->update([
+            'nickname' => $request->nickname,
+            'gender' => $request->gender
+            ]);
+        return redirect('/customer/index');
+    }
+
+    public function delete($id){
+        $customer = $this->customers->find($id);
+        if($customer == null) {
+            return redirect('/customer/index');
+        }
+        return view("customer.del",["customer"=>$customer]);
+    }
+
+    public function remove(Request $request){
+        $customer = $this->customers->find($request->id);
+        $customer->delete();
+        return redirect('customer/index');
+    }
+
+
 }
