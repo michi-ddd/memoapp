@@ -1,4 +1,6 @@
-   
+@extends('layouts.app')
+
+@section('content')
 <h1>顧客削除画面</h1>
 <div>
     <form action="/customer/del" method ="POST">
@@ -21,5 +23,4 @@
         <input type="submit" value="削除">
     </form>
 </div>
-    <br>
-    <a href="/index" >HOME</a>
+@endsection   

@@ -1,4 +1,6 @@
+@extends('layouts.app')
 
+@section('content')
 <h1>顧客登録画面</h1>
 @if ($errors->any())
     <div class="alert alert-danger">
@@ -25,3 +27,4 @@
       <input type="submit">
   </div>
 </form>
+@endsection

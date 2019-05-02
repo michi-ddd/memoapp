@@ -1,4 +1,6 @@
+@extends('layouts.app')
 
+@section('content')
 <h1>メモリスト</h1>
     <div>
         <table style="width:100%;" border="1">
@@ -18,5 +20,4 @@
             @endforeach
         </table>
     </div>
-    <br>
-    <a href="/index" >home</a>
+@endsection

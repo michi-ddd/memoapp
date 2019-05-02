@@ -1,4 +1,6 @@
+@extends('layouts.app')
 
+@section('content')
 <h1>顧客編集画面</h1>
 <div>
   <form action="/customer/edit" method="POST">
@@ -25,3 +27,4 @@
     <input type="submit" value="変更">
   </form>
 </div>
+@endsection

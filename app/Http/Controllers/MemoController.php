@@ -20,6 +20,8 @@ class MemoController extends Controller
      * @return void
      */
     public function __construct(Memo $memos){
+        $this->middleware('auth');
+
         $this->memos = $memos;
     }
 

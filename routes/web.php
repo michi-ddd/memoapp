@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/index', function () {return view('index');});
+Route::get('/', function () {return view('welcome');});
 
 Route::get('customer/index','CustomerController@index');
 Route::get('customer/create','CustomerController@create');
@@ -24,10 +24,12 @@ Route::post('customer/del/','CustomerController@remove');
 
 Route::get('memo/index','MemoController@index');
 Route::post('memo/create','MemoController@store');
-Route::get('memo/create','MemoController@create');
+Route::get('memo/create/{id}','MemoController@create');
 Route::get('memo/edit/{id}','MemoController@edit');
 Route::post('memo/edit/','MemoController@update');
 Route::get('memo/del/{id}','MemoController@delete');
 Route::post('memo/del/','MemoController@remove');
 
+Auth::routes();
 
+Route::get('/home', 'HomeController@index')->name('home');

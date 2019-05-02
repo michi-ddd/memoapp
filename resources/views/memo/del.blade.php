@@ -1,4 +1,6 @@
-   
+@extends('layouts.app')
+
+@section('content')
 <h1>Memo削除画面</h1>
 <div>
     <form action="/memo/del" method="POST">
@@ -17,5 +19,4 @@
     <input type="submit" value="削除">
     </form>
 </div>
-    <br>
-    <a href="/index" >HOME</a>
+@endsection   
