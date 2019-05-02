@@ -28,7 +28,7 @@ class MemoController extends Controller
     }
 
     public function index(){
-        $memos = $this->memos->all();
+        $memos = $this->memos->latest()->get();
         return view("/memo/index",["memos"=>$memos]);
     }
 
