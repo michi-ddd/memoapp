@@ -36,7 +36,7 @@
         </div>
     </div>
     <div class="card-header">Memo</div>
-        @foreach ($customer->memos as $memo)
+        @forelse ($customer->memos as $memo)
         <div class="card-body border-bottom">
             {{$memo->text}}
             <div class="text-right p-1">
@@ -45,7 +45,11 @@
             </div>
             <div class="text-right text-muted h6">from:{{$memo->user->name}} ({{$memo->created_at->format('Y,m,d H:i')}})</div>
         </div>
-        @endforeach
+        @empty
+        <div class="card-body border-bottom">
+        No post yet
+        </div>
+        @endforelse
     </div>
 </div>
 
