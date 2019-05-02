@@ -73,16 +73,8 @@ class CustomerController extends Controller
         return redirect('/customer/index');
     }
 
-    public function delete($id){
+    public function remove($id){
         $customer = $this->customers->find($id);
-        if($customer == null) {
-            return redirect('/customer/index');
-        }
-        return view("customer.del",["customer"=>$customer]);
-    }
-
-    public function remove(Request $request){
-        $customer = $this->customers->find($request->id);
         $customer->delete();
         return redirect('customer/index');
     }
