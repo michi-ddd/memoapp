@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\User;
 use App\Memo;
@@ -19,10 +21,10 @@ class MemoController extends Controller
      * @param  Memo  $memos
      * @return void
      */
-    public function __construct(Memo $memos){
+    public function __construct(Memo $memos,Customer $customers){
         $this->middleware('auth');
-
         $this->memos = $memos;
+        $this->customers = $customers;
     }
 
     public function index(){
@@ -30,20 +32,28 @@ class MemoController extends Controller
         return view("/memo/index",["memos"=>$memos]);
     }
 
-    public function create(){
-        return view("/memo/create");
+    public function create($id){
+        $customer = $this->customers->find($id);
+        $memos = $this->memos->all();
+        if($customer == null) {
+            return redirect('/customer/index');
+        }
+        return view("/memo/create",[
+            "customer" => $customer,
+            ]);
     }
 
     public function store(Request $request){
 
         $validatedData = $request->validate([
             'customer_id' => 'required|integer',
-            'user_id' => 'required|integer',
             ]);
 
-        $this->memos->create(['text' => $request->text, 
+        $this->memos->create([
+            'text' => $request->text, 
             'customer_id' => $request->customer_id, 
-            'user_id' => $request->user_id,]);
+            'user_id' => Auth::id(),
+            ]);
 
         return redirect("/memo/index");
     }
