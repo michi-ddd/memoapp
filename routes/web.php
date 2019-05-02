@@ -26,9 +26,7 @@ Route::post('memo/create','MemoController@store');
 Route::get('memo/create/{id}','MemoController@create');
 Route::get('memo/edit/{id}','MemoController@edit');
 Route::post('memo/edit/','MemoController@update');
-Route::get('memo/del/{id}','MemoController@delete');
-Route::post('memo/del/','MemoController@remove');
+Route::get('memo/del/{id}','MemoController@remove');
 
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
