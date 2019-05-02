@@ -1,7 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-<h1>顧客登録画面</h1>
+<div class="card">
+<div class="card-header">Customer Register</div>
 @if ($errors->any())
     <div class="alert alert-danger">
         <ul>
@@ -13,18 +14,18 @@
 @endif
 <form action="/customer/create" method="POST">
 {{ csrf_field() }}
-  <div>
-  <table style="width:100%;" border="1">
-    <tr>
-      <td>ニックネーム</td>
-      <td><input type="text" name="nickname"></td>
-    </tr>
-    <tr>
-      <td>性別</td>
-      <td><input type="radio" name="gender" value="1" checked>男性<input type="radio" name="gender" value="2">女性</td>
-    </tr>
-  </table>
-      <input type="submit">
-  </div>
+    <div class="container">
+      <div class="form-group mt-1">
+        <label>Name:</label>
+        <input type="text" name="nickname" class="form-control">
+      </div>
+      <div class="form-group mt-1">
+        <label>Gender:</label>
+        <input type="radio" name="gender" value="1" checked>Men
+        <input type="radio" name="gender" value="2" >Women
+        <button class="float-right btn-sm small mb-1" type="submit">Post</buttom>
+      </div>
+    </div>
 </form>
+</div>
 @endsection
