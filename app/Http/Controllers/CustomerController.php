@@ -59,13 +59,13 @@ class CustomerController extends Controller
         return view("customer.edit",["customer"=>$customer]);
     }
 
-    public function update(Request $request){
+    public function update(Request $request ,$id){
         $validatedData = $request->validate([
             'nickname' => 'required',
             'gender' => 'required|integer',
             ]);
-
-        $customer = $this->customers->find($request->id);
+            
+        $customer = $this->customers->find($id);
         $customer->update([
             'nickname' => $request->nickname,
             'gender' => $request->gender
