@@ -22,10 +22,10 @@ Route::post('customer/edit/{id}','CustomerController@update');
 Route::get('customer/del/{id}','CustomerController@remove');
 
 Route::get('memo/index','MemoController@index');
-Route::post('memo/create','MemoController@store');
+Route::post('memo/create/{id}','MemoController@store');
 Route::get('memo/create/{id}','MemoController@create');
 Route::get('memo/edit/{id}','MemoController@edit');
-Route::post('memo/edit/','MemoController@update');
+Route::post('memo/edit/{id}','MemoController@update');
 Route::get('memo/del/{id}','MemoController@remove');
 
 Auth::routes();

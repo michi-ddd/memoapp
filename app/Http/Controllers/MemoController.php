@@ -34,7 +34,6 @@ class MemoController extends Controller
 
     public function create($id){
         $customer = $this->customers->find($id);
-        $memos = $this->memos->all();
         if($customer == null) {
             return redirect('/customer/index');
         }
@@ -43,15 +42,11 @@ class MemoController extends Controller
             ]);
     }
 
-    public function store(Request $request){
-
-        $validatedData = $request->validate([
-            'customer_id' => 'required|integer',
-            ]);
+    public function store(Request $request,$id){
 
         $this->memos->create([
             'text' => $request->text, 
-            'customer_id' => $request->customer_id, 
+            'customer_id' => $id, 
             'user_id' => Auth::id(),
             ]);
 
@@ -66,11 +61,11 @@ class MemoController extends Controller
         return view("/memo/edit",["memo"=>$memo]);
     }
 
-    public function update(Request $request){
+    public function update(Request $request,$id){
         $validatedData = $request->validate([
             'text' => 'required',
             ]);       
-        $memo = $this->memos->find($request->id);
+        $memo = $this->memos->find($id);
         $memo->update([
             'text' => $request->text,
             ]);

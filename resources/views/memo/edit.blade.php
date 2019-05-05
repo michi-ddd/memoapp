@@ -12,10 +12,9 @@
         </ul>
     </div>
   @endif
-  <form action="/memo/edit" method="POST">
+  <form action="/memo/edit/{{$memo->id}}" method="POST">
   {{ csrf_field() }}
       <div class="container">
-        <input type="hidden" name="id" value="{{$memo->id}}">
         <div class="form-group mt-1">
           <label>Please edit the note</label>
           <textarea type="text" name="text" class="form-control" value="{{$memo->text}}">{{$memo->text}}</textarea>
