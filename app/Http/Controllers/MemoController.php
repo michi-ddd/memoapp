@@ -33,10 +33,7 @@ class MemoController extends Controller
     }
 
     public function create($id){
-        $customer = $this->customers->find($id);
-        if($customer == null) {
-            return redirect('/customer/index');
-        }
+        $customer = $this->customers->findOrFail($id);
         return view("/memo/create",[
             "customer" => $customer,
             ]);
@@ -54,10 +51,7 @@ class MemoController extends Controller
     }
 
     public function edit($id){
-        $memo = $this->memos->find($id);
-        if($memo == null) {
-            return redirect('/memo/index');
-        }
+        $memo = $this->memos->findOrFail($id);
         return view("/memo/edit",["memo"=>$memo]);
     }
 
@@ -65,7 +59,7 @@ class MemoController extends Controller
         $validatedData = $request->validate([
             'text' => 'required',
             ]);       
-        $memo = $this->memos->find($id);
+        $memo = $this->memos->findOrFail($id);
         $memo->update([
             'text' => $request->text,
             ]);
