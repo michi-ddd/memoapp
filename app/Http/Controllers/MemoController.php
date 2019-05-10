@@ -40,7 +40,9 @@ class MemoController extends Controller
     }
 
     public function store(Request $request,$id){
-
+        $validatedData = $request->validate([
+            'text' => 'required',
+            ]); 
         $this->memos->create([
             'text' => $request->text, 
             'customer_id' => $id, 
