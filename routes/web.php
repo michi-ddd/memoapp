@@ -11,8 +11,6 @@
 |
 */
 
-Route::get('/', function () {return view('welcome');});
-
 Route::get('customer/index','CustomerController@index');
 Route::get('customer/create','CustomerController@create');
 Route::post('customer/create','CustomerController@store');
@@ -29,4 +27,4 @@ Route::post('memo/edit/{id}','MemoController@update');
 Route::get('memo/del/{id}','MemoController@remove');
 
 Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
