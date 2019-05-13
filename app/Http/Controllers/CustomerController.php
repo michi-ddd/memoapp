@@ -18,6 +18,7 @@ class CustomerController extends Controller
      */
 
     public function __construct(Customer $customers){
+        $this->middleware('auth');
         $this->customers = $customers;
     }
 
@@ -43,28 +44,22 @@ class CustomerController extends Controller
     }
 
     public function show($id){
-        $customer = $this->customers->find($id);
-        if($customer == null) {
-            return redirect('/customer/index');
-        }
+        $customer = $this->customers->findOrFail($id);
         return view("customer.show",["customer"=>$customer]);
     }
 
     public function edit($id){
-        $customer = $this->customers->find($id);
-        if($customer == null) {
-            return redirect('/customer/index');
-        }
+        $customer = $this->customers->findOrFail($id);
         return view("customer.edit",["customer"=>$customer]);
     }
 
-    public function update(Request $request){
+    public function update(Request $request ,$id){
         $validatedData = $request->validate([
             'nickname' => 'required',
             'gender' => 'required|integer',
             ]);
-
-        $customer = $this->customers->find($request->id);
+            
+        $customer = $this->customers->findOrFail($id);
         $customer->update([
             'nickname' => $request->nickname,
             'gender' => $request->gender
@@ -72,16 +67,8 @@ class CustomerController extends Controller
         return redirect('/customer/index');
     }
 
-    public function delete($id){
-        $customer = $this->customers->find($id);
-        if($customer == null) {
-            return redirect('/customer/index');
-        }
-        return view("customer.del",["customer"=>$customer]);
-    }
-
-    public function remove(Request $request){
-        $customer = $this->customers->find($request->id);
+    public function remove($id){
+        $customer = $this->customers->findOrFail($id);
         $customer->delete();
         return redirect('customer/index');
     }

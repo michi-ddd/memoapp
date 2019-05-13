@@ -1,27 +1,36 @@
+@extends('layouts.app')
 
-<h1>顧客編集画面</h1>
-<div>
-  <form action="/customer/edit" method="POST">
+@section('content')
+<div class="card">
+  <div class="card-header">Customer Edit</div>
+  @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+        @foreach ($errors->all() as $error)
+          <li>{{ $error }}</li>
+        @endforeach
+        </ul>
+    </div>
+  @endif
+  <form action="/customer/edit/{{$customer->id}}" method="POST">
   {{ csrf_field() }}
-      <table style="width:100%;"cellpadding="3" border="1">
-          <input type="hidden" name="id" value="{{$customer->id}}">
-          <tr>
-            <th>ニックネーム</th>
-            <th>性別</th>
-          </tr>
-          <tr>
-            <td><input type="text" name="nickname" value="{{$customer->nickname}}"></td>
-            @if($customer->gender == "1")
-            <td><input type="radio" name="gender" value="1" checked>男性
-                <input type="radio" name="gender" value="2" >女性
-            </td>
-            @else
-            <td><input type="radio" name="gender" value="1" >男性
-                <input type="radio" name="gender" value="2" checked>女性
-            </td>
-            @endif
-          </tr>
-      </table>
-    <input type="submit" value="変更">
+      <div class="container">
+        <div class="form-group mt-1">
+          <label>Name:</label>
+          <input type="text" name="nickname" class="form-control" value="{{$customer->nickname}}">
+        </div>
+        <div class="form-group mt-1">
+          <label>Gender:</label>
+          @if($customer->gender == "1")
+            <input type="radio" name="gender" value="1" checked>Men
+            <input type="radio" name="gender" value="2" >Women
+          @else
+            <input type="radio" name="gender" value="1" >Men
+            <input type="radio" name="gender" value="2" checked>Women
+          @endif
+        <button class="float-right small mb-1" type="submit">Edit</button>
+        </div>
+      </div>
   </form>
 </div>
+@endsection

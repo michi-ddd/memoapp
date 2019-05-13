@@ -1,5 +1,8 @@
+@extends('layouts.app')
 
-<h1>メモ登録画面</h1>
+@section('content')
+<div class="card">
+<div class="card-header">Post a Memo　(To:{{$customer->nickname}})</div>
 @if ($errors->any())
     <div class="alert alert-danger">
         <ul>
@@ -9,23 +12,18 @@
         </ul>
     </div>
 @endif
-<form action="/memo/create" method="POST">
+<form action="/memo/create/{{$customer->id}}" method="POST">
 {{ csrf_field() }}
-  <div>
-  <table style="width:100%;" border="1">
-    <tr>
-      <th>顧客No：</th>
-      <td><input type="text" name="customer_id"></td>
-    </tr>
-    <tr>
-      <th>投稿者No：</th>
-      <td><input type="text" name="user_id"></td>
-    </tr>
-    <tr>
-      <th>メモ</th>
-      <td><textarea  name="text" cols="40" rows="4" maxlength="20" placeholder="ここにメモを記入してください"></textarea></td>
-    </tr>
-  </table>
-      <input type="submit">
-  </div>
+    <div class="container">
+      <div class="form-group mt-1">
+        <label for="text">Memo:</label>
+        <textarea id="text" name="text" class="form-control"></textarea>
+      </div>
+      <div class="text-right text-muted">
+        From:{{ Auth::user()->name }}
+      <input class="small mb-1" type="submit" value="Post">
+      </div>
+    </div>
 </form>
+</div>
+@endsection
